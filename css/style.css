@@ -238,20 +238,20 @@ body.js-enabled .reveal-delay-3 {
 
 /* Подключаем трендовые крупные бьюти-планы */
 .frame-main .slide-img-1 {
-  background-image: url("../img/photo1.jpg");
+  background-image: url("../img/photo1.webp");
   animation-delay: 0s;
 }
 .frame-main .slide-img-2 {
-  background-image: url("../img/photo2.jpg");
+  background-image: url("../img/photo2.webp");
   animation-delay: 6s;
 }
 
 .frame-sub .slide-img-3 {
-  background-image: url("../img/photo3.jpg");
+  background-image: url("../img/photo3.webp");
   animation-delay: 3s;
 }
 .frame-sub .slide-img-4 {
-  background-image: url("../img/photo4.jpg");
+  background-image: url("../img/photo4.webp");
   animation-delay: 9s;
 }
 
