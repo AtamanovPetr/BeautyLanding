@@ -238,20 +238,20 @@ body.js-enabled .reveal-delay-3 {
 
 /* Подключаем трендовые крупные бьюти-планы */
 .frame-main .slide-img-1 {
-  background-image: url("./img/photo1.jpg");
+  background-image: url("../img/photo1.jpg");
   animation-delay: 0s;
 }
 .frame-main .slide-img-2 {
-  background-image: url("./img/photo2.jpg");
+  background-image: url("../img/photo2.jpg");
   animation-delay: 6s;
 }
 
 .frame-sub .slide-img-3 {
-  background-image: url("./img/photo3.jpg");
+  background-image: url("../img/photo3.jpg");
   animation-delay: 3s;
 }
 .frame-sub .slide-img-4 {
-  background-image: url("./img/photo4.jpg");
+  background-image: url("../img/photo4.jpg");
   animation-delay: 9s;
 }
 
@@ -417,17 +417,21 @@ body.js-enabled .reveal-delay-3 {
   display: flex;
   gap: 30px;
   overflow-x: auto;
-  scroll-behavior: smooth;
   padding: 20px 10px 40px 10px;
   /* Скрываем стандартный скроллбар */
   scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch; /* Плавный инерционный скролл на iOS */
+
+  /* Включаем аппаратное ускорение для всей ленты */
+  transform: translateZ(0);
+  will-change: scroll-position;
 }
 
 .services-carousel::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* Стили карточки (с фиксированной шириной для слайдера и уменьшенным паддингом под фото) */
+/* Стили карточки (Максимальное облегчение веса для GPU) */
 .services-carousel .service-card {
   flex: 0 0 360px; /* Карточки не сжимаются и имеют строгую ширину */
   max-width: 100%;
@@ -438,8 +442,20 @@ body.js-enabled .reveal-delay-3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(44, 34, 30, 0.02);
+
+  /* Убираем массивную тень в статике, чтобы облегчить рендеринг при движении ленты */
+  box-shadow: 0 4px 12px rgba(44, 34, 30, 0.02);
+
+  /* Подготавливаем видеокарту к анимации ховера, предотвращая размытие текста */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, box-shadow, opacity;
+
+  /* Делаем переход ховера быстрее и отзывчивее */
+  transition:
+    transform 0.25s ease-out,
+    border-color 0.25s ease-out,
+    box-shadow 0.25s ease-out;
 }
 
 /* Обертка для фотографии в карточке */
@@ -458,7 +474,8 @@ body.js-enabled .reveal-delay-3 {
   height: 100%;
   object-fit: cover; /* Изображение заполняет блок без растягивания */
   object-position: center;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  transition: transform 0.3s ease-out;
 }
 
 /* Контейнер текстовой информации */
@@ -535,18 +552,19 @@ body.js-enabled .reveal-delay-3 {
   right: -25px;
 }
 
-/* --- АНИМАЦИИ ПРИ НАВЕДЕНИИ (ЭФФЕКТЫ) --- */
+/* --- АНИМАЦИИ ПРИ НАВЕДЕНИИ (ОПТИМИЗИРОВАННЫЕ ЭФФЕКТЫ) --- */
 
+/* Облегченный ховер: приподнимаем на безопасные 4px и не размываем тень слишком сильно */
 .services-carousel .service-card:hover {
-  transform: translateY(-8px);
+  transform: translate3d(0, -4px, 0);
   background-color: #ffffff;
   border-color: #e8c5c8; /* Рамка становится пудрово-розовой */
-  box-shadow: 0 20px 40px rgba(232, 197, 200, 0.25);
+  box-shadow: 0 12px 24px rgba(232, 197, 200, 0.15);
 }
 
-/* Плавный зум фотографии внутри карточки при наведении */
+/* Ограничиваем силу зума до 1.03 для сохранения плавности кадров */
 .services-carousel .service-card:hover .service-card-image img {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .services-carousel .service-card:hover .service-name {
@@ -979,17 +997,18 @@ body.js-enabled .reveal-delay-3 {
   .services-title {
     font-size: 2rem;
   }
-  /* Прячем стрелки на тач-скринах — там удобнее листать пальцем (swipe) */
+
   .slider-arrow {
     display: none;
   }
   .services-carousel {
     padding-left: 0;
     padding-right: 0;
+    scroll-snap-type: x mandatory; /* Мягкое прилипание карточек на мобилках */
   }
   .services-carousel .service-card {
-    flex: 0 0 300px; /* Делаем карточки чуть уже на смартфонах */
-    padding: 30px 25px;
+    flex: 0 0 300px; /* Делаем карточки чуть компактнее на смартфонах */
+    scroll-snap-align: start; /* Точка фиксации */
   }
 }
 @media (max-width: 992px) {
