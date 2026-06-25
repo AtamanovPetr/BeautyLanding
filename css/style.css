@@ -1,0 +1,1183 @@
+/* Базовые настройки */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #faf6f0; /* Теплый молочный фон для сайта */
+  color: #2c2c2c;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Стартовое состояние для элементов анимации.
+   Используем селектор body.js-enabled, чтобы элементы скрывались ТОЛЬКО если JS работает.
+   Если JS отключен, элементы сразу будут видны. */
+body.js-enabled .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* 3. Состояние элемента, когда пользователь доскроллил до него */
+.reveal.active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 4. Поочередные задержки (каскадный эффект для карточек услуг) */
+body.js-enabled .reveal-delay-1 {
+  transition-delay: 0.12s;
+}
+body.js-enabled .reveal-delay-2 {
+  transition-delay: 0.24s;
+}
+body.js-enabled .reveal-delay-3 {
+  transition-delay: 0.36s;
+}
+
+/* Настройки главного экрана */
+.hero-premium {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #faf6f0; /* Фирменный молочный фон */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 0 80px 0;
+}
+
+/* Ограничитель контейнера (переопределяем флекс для этой секции) */
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  z-index: 5;
+}
+
+/* --- ЛЕВАЯ СТОРОНА: ТЕКСТ И ШРИФТЫ --- */
+.hero-text-side {
+  flex: 1;
+  max-width: 550px;
+  text-align: left;
+  /* Изящное каскадное появление всего блока */
+  animation: textFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Аккуратный бэдж над заголовком */
+.hero-tag-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #bfa3a6;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(232, 197, 200, 0.4);
+  padding-bottom: 4px;
+}
+
+/* Роскошный высокий заголовок */
+.hero-main-title {
+  font-size: 4.2rem;
+  font-weight: 300;
+  line-height: 1.15;
+  color: #2c2c2c;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+/* Акцентное выделение текста */
+.hero-main-title .text-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: #bfa3a6;
+  background: linear-gradient(45deg, #bfa3a6, #e8c5c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Описание */
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555555;
+  font-weight: 300;
+  margin-bottom: 45px;
+  letter-spacing: 0.3px;
+}
+
+/* Блок с кнопками */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Главная овальная кнопка */
+.hero-primary-btn {
+  display: inline-block;
+  padding: 18px 40px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #2c2c2c; /* Контрастный благородный темный графит */
+  text-decoration: none;
+  border-radius: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(44, 34, 30, 0.15);
+}
+
+.hero-primary-btn:hover {
+  background-color: #e8c5c8;
+  color: #2c2c2c;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(232, 197, 200, 0.4);
+}
+
+/* Вторичная текстовая ссылка */
+.hero-secondary-btn {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #2c2c2c;
+  transition: all 0.3s ease;
+}
+
+.hero-secondary-btn span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hero-secondary-btn:hover {
+  color: #bfa3a6;
+  border-color: #bfa3a6;
+}
+
+.hero-secondary-btn:hover span {
+  transform: translateY(4px);
+}
+
+/* --- ПРАВАЯ СТОРОНА: КОЛЛАЖ ФОТОГРАФИЙ --- */
+.hero-visual-side {
+  flex: 1;
+  position: relative;
+  height: 580px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Общие рамки для фото (глянцевый журнал) */
+.photo-frame {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(44, 34, 30, 0.12);
+  transition: transform 0.5s ease;
+}
+
+/* Главное большое фото */
+.frame-main {
+  width: 320px;
+  height: 480px;
+  left: 0;
+  top: 0;
+  border-radius: 160px 160px 0 0; /* Изящная арочная форма */
+  z-index: 2;
+  animation: imageFadeIn 1.5s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Дополнительное смещенное фото */
+.frame-sub {
+  width: 220px;
+  height: 330px;
+  right: 0;
+  bottom: 0;
+  border-radius: 110px 110px 110px 110px; /* Полный элегантный овал */
+  z-index: 3;
+  border: 6px solid #faf6f0; /* Визуально отделяем от заднего фона */
+  animation: imageFadeIn 1.5s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Интерактивный параллакс при наведении на зону коллажа */
+.hero-visual-side:hover .frame-main {
+  transform: scale(1.02) translate(-5px, -5px);
+}
+.hero-visual-side:hover .frame-sub {
+  transform: scale(1.05) translate(8px, 8px);
+}
+
+/* Анимированные слайды внутри рамок */
+.photo-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: premiumSlider 12s infinite ease-in-out;
+}
+
+/* Подключаем трендовые крупные бьюти-планы */
+.frame-main .slide-img-1 {
+  background-image: url("/img/photo1.jpg");
+  animation-delay: 0s;
+}
+.frame-main .slide-img-2 {
+  background-image: url("/img/photo2.jpg");
+  animation-delay: 6s;
+}
+
+.frame-sub .slide-img-3 {
+  background-image: url("/img/photo3.jpg");
+  animation-delay: 3s;
+}
+.frame-sub .slide-img-4 {
+  background-image: url("/img/photo4.jpg");
+  animation-delay: 9s;
+}
+
+/* --- ФОНОВАЯ БЕГУЩАЯ СТРОКА --- */
+.hero-ticker {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.03; /* Почти невидимая, текстурная строка */
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ticker-wrapper {
+  display: inline-block;
+  font-size: 8rem;
+  font-weight: 900;
+  font-family: sans-serif;
+  animation: tickerLoop 30s linear infinite;
+}
+
+/* --- ИНДИКАТОР СКРОЛЛА --- */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background-color: rgba(44, 34, 30, 0.1);
+  overflow: hidden;
+  z-index: 5;
+}
+
+.scroll-line {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #bfa3a6;
+  animation: scrollDrop 2s infinite ease-in-out;
+}
+
+/* --- КЛЮЧЕВЫЕ КАДРЫ ДЛЯ ПРЕМИУМ-АНИМАЦИЙ --- */
+
+@keyframes textFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes imageFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes premiumSlider {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  10%,
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes tickerLoop {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes scrollDrop {
+  0% {
+    transform: translateY(-100%);
+  }
+  50%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.services {
+  padding: 100px 0;
+  background-color: #faf6f0; /* Теплый молочный фон из настроек body */
+}
+
+/* Ограничивающий контейнер */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Шапка секции */
+/* ==========================================================================
+   ОБНОВЛЕННАЯ СЕКЦИЯ УСЛУГ С ФОТОГРАФИЯМИ И СЛАЙДЕРОМ
+   ========================================================================== */
+
+.services-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.services-subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #bfa3a6; /* Приглушенный пудровый */
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.services-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.services-decor-line {
+  width: 60px;
+  height: 1px;
+  background-color: #e8c5c8;
+  margin: 0 auto;
+}
+
+/* Обертка слайдера для позиционирования стрелок */
+.services-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Горизонтальная лента карусели */
+.services-carousel {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px 40px 10px;
+  /* Скрываем стандартный скроллбар */
+  scrollbar-width: none; /* Firefox */
+}
+
+.services-carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Стили карточки (с фиксированной шириной для слайдера и уменьшенным паддингом под фото) */
+.services-carousel .service-card {
+  flex: 0 0 360px; /* Карточки не сжимаются и имеют строгую ширину */
+  max-width: 100%;
+  background-color: #ffffff;
+  padding: 20px; /* Оптимальный отступ вокруг фото и контента */
+  border-radius: 24px 8px 24px 8px; /* Повторяем изящную асимметрию */
+  border: 1px solid rgba(232, 197, 200, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(44, 34, 30, 0.02);
+}
+
+/* Обертка для фотографии в карточке */
+.service-card-image {
+  width: 100%;
+  height: 220px; /* Единая фиксированная высота для всех изображений */
+  border-radius: 18px 6px 18px 6px; /* Внутреннее скругление */
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Стили самого тега img внутри обертки */
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Изображение заполняет блок без растягивания */
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Контейнер текстовой информации */
+.service-info {
+  padding: 0 10px;
+}
+
+/* Название услуги */
+.service-name {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #2c2c2c;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* Описание услуги */
+.service-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #706f6f;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+/* Цена */
+.service-price {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  border-top: 1px dashed rgba(232, 197, 200, 0.4);
+  padding-top: 15px;
+  margin-top: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+/* Элегантные стрелки навигации */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid rgba(232, 197, 200, 0.4);
+  color: #2c2c2c;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(44, 34, 30, 0.06);
+}
+
+.slider-arrow:hover {
+  background-color: #e8c5c8;
+  color: #ffffff;
+  border-color: #e8c5c8;
+  box-shadow: 0 6px 20px rgba(232, 197, 200, 0.4);
+}
+
+.arrow-prev {
+  left: -25px;
+}
+
+.arrow-next {
+  right: -25px;
+}
+
+/* --- АНИМАЦИИ ПРИ НАВЕДЕНИИ (ЭФФЕКТЫ) --- */
+
+.services-carousel .service-card:hover {
+  transform: translateY(-8px);
+  background-color: #ffffff;
+  border-color: #e8c5c8; /* Рамка становится пудрово-розовой */
+  box-shadow: 0 20px 40px rgba(232, 197, 200, 0.25);
+}
+
+/* Плавный зум фотографии внутри карточки при наведении */
+.services-carousel .service-card:hover .service-card-image img {
+  transform: scale(1.06);
+}
+
+.services-carousel .service-card:hover .service-name {
+  color: #bfa3a6; /* Название мягко меняет цвет */
+}
+
+.services-carousel .service-card:hover .service-price {
+  color: #bfa3a6;
+  border-top-style: solid; /* Пунктир превращается в сплошную линию */
+}
+
+/* Фикс для сохранения структуры анимации появления */
+.services-carousel .service-card.reveal {
+  display: flex;
+}
+
+.reviews {
+  padding: 100px 0;
+  background-color: #ffffff;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.reviews-subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #bfa3a6;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.reviews-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.reviews-decor-line {
+  width: 60px;
+  height: 1px;
+  background-color: #e8c5c8;
+  margin: 0 auto;
+}
+
+.slider-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.slider-wrapper input[type="radio"] {
+  display: none;
+}
+
+.slides-container {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Базовые стили карточки отзыва */
+.review-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  background-color: #faf6f0;
+  padding: 50px 40px;
+  border-radius: 40px;
+  box-shadow: 0 15px 35px rgba(44, 34, 30, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Плавный переход для самой карточки */
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.95) translateY(10px);
+}
+
+/* Эффект парения при наведении на весь блок отзывов */
+.review-slide:hover {
+  transform: scale(1) translateY(-5px) !important;
+  box-shadow: 0 25px 50px rgba(232, 197, 200, 0.2);
+}
+
+/* Блок звезд и анимация волновой пульсации звезд */
+.review-stars-box {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 4px;
+}
+
+.review-star {
+  color: #ffb800;
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+/* Каждая звездочка пульсирует со своим микро-смещением по времени */
+.review-slide:hover .review-star {
+  animation: starPulse 1s ease-in-out infinite alternate;
+}
+.review-slide:hover .review-star:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.review-slide:hover .review-star:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.review-slide:hover .review-star:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.review-slide:hover .review-star:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Обертка текста для анимации проявления */
+.review-text-anim {
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 0.6s 0.2s ease,
+    transform 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.review-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 25px;
+  max-width: 650px;
+}
+
+.review-author {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #bfa3a6;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.6s 0.3s ease;
+}
+
+/* --- МАГИЯ CSS: АНИМАЦИЯ СМЕНЫ СЛАЙДОВ --- */
+
+#slide-1:checked ~ .slides-container .slide-content-1,
+#slide-2:checked ~ .slides-container .slide-content-2,
+#slide-3:checked ~ .slides-container .slide-content-3 {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+}
+
+/* Проявляем текст и автора с задержкой только в АКТИВНОМ слайде */
+#slide-1:checked ~ .slides-container .slide-content-1 .review-text-anim,
+#slide-2:checked ~ .slides-container .slide-content-2 .review-text-anim,
+#slide-3:checked ~ .slides-container .slide-content-3 .review-text-anim {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#slide-1:checked ~ .slides-container .slide-content-1 .review-author,
+#slide-2:checked ~ .slides-container .slide-content-2 .review-author,
+#slide-3:checked ~ .slides-container .slide-content-3 .review-author {
+  opacity: 1;
+}
+
+/* Навигационные точки */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.dot-label {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e5dcd3;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Анимация превращения точки в изящный овал при активации */
+#slide-1:checked ~ .slider-dots .dot-label:nth-child(1),
+#slide-2:checked ~ .slider-dots .dot-label:nth-child(2),
+#slide-3:checked ~ .slider-dots .dot-label:nth-child(3) {
+  background-color: #e8c5c8;
+  width: 28px; /* Точка превращается в стильную вытянутую пилюлю */
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(232, 197, 200, 0.5);
+}
+
+.dot-label:hover {
+  background-color: #bfa3a6;
+}
+@keyframes starPulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+    color: #ffd000;
+  }
+}
+.contacts {
+  padding: 100px 0 40px 0;
+  background-color: #faf6f0; /* Возвращаемся к теплому молочному тону */
+  border-top: 1px solid rgba(232, 197, 200, 0.2);
+}
+
+/* Двухколоночный флекс-контейнер */
+.contacts-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+/* Левая колонка */
+.contacts-info {
+  flex: 1;
+}
+
+.contacts-subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #bfa3a6;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.contacts-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.contacts-decor-line {
+  width: 60px;
+  height: 1px;
+  background-color: #e8c5c8;
+  margin-bottom: 40px;
+}
+
+/* Список контактов */
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.contacts-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #bfa3a6;
+  font-weight: 600;
+}
+
+.item-value {
+  font-size: 1.15rem;
+  color: #4a4a4a;
+  font-weight: 300;
+}
+
+/* Ссылка на телефон */
+.phone-link {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.phone-link:hover {
+  color: #e8c5c8;
+}
+
+/* Правая колонка: Форма-карточка */
+.contacts-action-card {
+  flex: 1;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 50px 40px;
+  border-radius: 10px 40px 10px 40px; /* Инвертированная фирменная асимметрия */
+  box-shadow: 0 20px 45px rgba(44, 34, 30, 0.04);
+  border: 1px solid rgba(232, 197, 200, 0.15);
+}
+
+.action-card-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #2c2c2c;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.action-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #706f6f;
+  font-weight: 300;
+  margin-bottom: 35px;
+}
+
+/* Кнопки мессенджеров */
+.messengers-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.msg-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.msg-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Интеграция брендовых цветов в пастельную палитру */
+.btn-whatsapp {
+  background-color: #e6f7ed; /* Разбавленный зеленый */
+  color: #1e7e43;
+}
+
+.btn-telegram {
+  background-color: #e6f1f9; /* Разбавленный синий */
+  color: #1d71b3;
+}
+
+/* Эффекты наведения на кнопки мессенджеров */
+.btn-whatsapp:hover {
+  background-color: #25d366;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+}
+
+.btn-telegram:hover {
+  background-color: #0088cc;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 136, 204, 0.2);
+}
+
+/* Анимация иконки при наведении */
+.msg-btn:hover .msg-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* Нижний копирайт */
+.footer-bottom {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid rgba(232, 197, 200, 0.15);
+  font-size: 0.85rem;
+  color: #bfa3a6;
+  font-weight: 300;
+}
+.btn-instagram {
+  background-color: #fcf0f2; /* Нежный пудрово-розовый отлив */
+  color: #b93b68;
+}
+
+/* Эффект наведения: сочный градиент Instagram */
+.btn-instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(220, 39, 67, 0.25);
+}
+
+/* Поскольку в SVG инстаграма используется stroke (контур) вместо fill, меняем цвет контура при наведении */
+.btn-instagram:hover .msg-icon {
+  stroke: #ffffff;
+}
+@media (max-width: 1024px) {
+  .services {
+    padding: 60px 0;
+  }
+  .services-title {
+    font-size: 2rem;
+  }
+  /* Прячем стрелки на тач-скринах — там удобнее листать пальцем (swipe) */
+  .slider-arrow {
+    display: none;
+  }
+  .services-carousel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .services-carousel .service-card {
+    flex: 0 0 300px; /* Делаем карточки чуть уже на смартфонах */
+    padding: 30px 25px;
+  }
+}
+@media (max-width: 992px) {
+  .contacts-wrapper {
+    flex-direction: column; /* Перестраиваем в один столбец на планшетах */
+    align-items: stretch;
+    gap: 40px;
+  }
+
+  .contacts-action-card {
+    max-width: 100%; /* Карточка занимает всю ширину */
+  }
+  .hero-premium {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    min-height: auto; /* Позволяем секции растягиваться под контент */
+  }
+
+  /* Главный контейнер: строго выстраиваем блоки один под другим */
+  .hero-container {
+    flex-direction: column; /* Фотографии сверху, текст снизу */
+    gap: 30px;
+    text-align: center;
+  }
+
+  /* Корректируем зону с фотографиями */
+  .hero-visual-side {
+    width: 100%;
+    max-width: 340px; /* Ограничиваем общую ширину коллажа на мобильных */
+    height: 380px; /* Уменьшаем высоту зоны */
+    margin: 0 auto; /* Центрируем коллаж */
+    flex: none;
+  }
+
+  /* Главная арка (уменьшаем размеры для мобильных) */
+  .frame-main {
+    width: 220px;
+    height: 320px;
+    border-radius: 110px 110px 0 0; /* Пропорционально уменьшаем скругление арки */
+    left: 0;
+    top: 0;
+  }
+
+  /* Дополнительный овал (уменьшаем размеры) */
+  .frame-sub {
+    width: 150px;
+    height: 220px;
+    border-radius: 75px; /* Пропорциональный овал */
+    right: 0;
+    bottom: 0;
+  }
+
+  /* Текстовая сторона: теперь она идет под фотографиями */
+  .hero-text-side {
+    width: 100%;
+    max-width: 100%;
+    text-align: center; /* Центрируем весь текст */
+    flex: none;
+    margin-top: 10px;
+  }
+
+  /* Уменьшаем огромный заголовок, чтобы он не переносился по одной букве */
+  .hero-main-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+
+  /* Описание */
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding: 0 10px; /* Добавляем внутренние отступы, чтобы текст не лип к краям */
+  }
+
+  /* Кнопки: выстраиваем вертикально во всю ширину */
+  .hero-actions {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 320px; /* Ограничиваем ширину кнопок для аккуратности */
+    margin: 0 auto; /* Центрируем блок кнопок */
+  }
+
+  .hero-primary-btn {
+    width: 100%;
+    text-align: center;
+    padding: 16px 20px;
+  }
+
+  .hero-secondary-btn {
+    align-self: center; /* Центрируем текстовую кнопку */
+    display: inline-block;
+  }
+
+  /* Уменьшаем бегущую строку, чтобы она не создавала горизонтальный скролл */
+  .ticker-wrapper {
+    font-size: 4rem;
+  }
+}
+/* Адаптация под смартфоны */
+@media (max-width: 768px) {
+  .services {
+    padding: 60px 0;
+  }
+
+  .services-title {
+    font-size: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr; /* На мобильных выстраиваем строго в один столбец */
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 30px 25px;
+  }
+
+  .service-name {
+    font-size: 1.2rem;
+  }
+  .reviews {
+    padding: 60px 0;
+  }
+
+  .reviews-title {
+    font-size: 2rem;
+  }
+
+  .slides-container {
+    min-height: 320px; /* Текст на мобильных длиннее, увеличиваем высоту */
+  }
+
+  .review-slide {
+    padding: 35px 20px;
+  }
+
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .contacts {
+    padding: 60px 0 30px 0;
+  }
+
+  .contacts-title {
+    font-size: 2rem;
+  }
+
+  .contacts-decor-line {
+    margin-bottom: 30px;
+  }
+
+  .item-value {
+    font-size: 1.05rem;
+  }
+
+  .contacts-action-card {
+    padding: 35px 20px;
+  }
+  .reviews {
+    padding: 60px 0;
+  }
+  .reviews-title {
+    font-size: 2rem;
+  }
+  .slides-container {
+    min-height: 350px;
+  } /* Текст сжимается, блок становится выше */
+  .review-slide {
+    padding: 35px 20px;
+  }
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.js-enabled .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  body.js-enabled .reveal-delay-1,
+  body.js-enabled .reveal-delay-2,
+  body.js-enabled .reveal-delay-3 {
+    transition-delay: 0s;
+  }
+}

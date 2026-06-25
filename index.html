@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Салон красоты | Главная</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="hero-premium">
+      <!-- Тонкая, едва заметная бегущая строка на заднем плане для динамики -->
+      <div class="hero-ticker">
+        <div class="ticker-wrapper">
+          <span
+            >HAIR STUDIO • COLOR EXPERT • SHAPING THE STYLE • SMART CUTS •
+            PREMIUM CARE • BEAUTY OASIS •
+          </span>
+          <span
+            >HAIR STUDIO • COLOR EXPERT • SHAPING THE STYLE • SMART CUTS •
+            PREMIUM CARE • BEAUTY OASIS •
+          </span>
+        </div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- Левая колонка: Высокая типографика и призыв к действию -->
+        <div class="hero-text-side">
+          <div class="hero-tag-badge">Premium Hair Studio</div>
+          <h1 class="hero-main-title">
+            Эстетика <br />
+            <span class="text-accent">твоих волос</span>
+          </h1>
+          <p class="hero-description">
+            Пространство, где создаются умные стрижки, безупречные сложные
+            окрашивания и глубокий молекулярный уход. Раскрываем вашу
+            индивидуальность через форму и цвет.
+          </p>
+          <div class="hero-actions">
+            <a href="#contacts" class="hero-primary-btn">Записаться на визит</a>
+            <a href="#services" class="hero-secondary-btn"
+              >Смотреть прайс <span>↓</span></a
+            >
+          </div>
+        </div>
+
+        <!-- Правая колонка: Динамичный живой коллаж (Глянец) -->
+        <div class="hero-visual-side">
+          <!-- Кадр 1: Большой вертикальный банер -->
+          <div class="photo-frame frame-main">
+            <div class="photo-slide slide-img-1"></div>
+            <div class="photo-slide slide-img-2"></div>
+          </div>
+          <!-- Кадр 2: Маленький смещенный банер (эффект глубины) -->
+          <div class="photo-frame frame-sub">
+            <div class="photo-slide slide-img-3"></div>
+            <div class="photo-slide slide-img-4"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="services" id="services">
+      <div class="container">
+        <!-- Заголовок секции -->
+        <div class="services-header reveal">
+          <span class="services-subtitle">Прайс-лист</span>
+          <h2 class="services-title">Наши услуги</h2>
+          <div class="services-decor-line"></div>
+        </div>
+
+        <!-- Обертка слайдера со стрелками -->
+        <div class="services-slider-wrapper">
+          <!-- Стрелки навигации -->
+          <button class="slider-arrow arrow-prev" aria-label="Назад">←</button>
+          <button class="slider-arrow arrow-next" aria-label="Вперед">→</button>
+
+          <!-- Контейнер ленты -->
+          <div class="services-carousel">
+            <!-- Карточка 1 -->
+            <div class="service-card reveal reveal-delay-1">
+              <div class="service-card-image">
+                <img src="./img/service1.jpg" alt="Умная стрижка" />
+              </div>
+              <div class="service-info">
+                <h3 class="service-name">Умная стрижка</h3>
+                <p class="service-desc">
+                  Стрижка по форме роста волос, не требующая долгой укладки.
+                  Включает мытье и сушку.
+                </p>
+              </div>
+              <div class="service-price">2 500 ₽</div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="service-card reveal reveal-delay-2">
+              <div class="service-card-image">
+                <img src="./img/service2.jpg" alt="Сложное окрашивание" />
+              </div>
+              <div class="service-info">
+                <h3 class="service-name">Сложное окрашивание</h3>
+                <p class="service-desc">
+                  Airtouch, Shatush, Balayage. Плавные переходы и сохранение
+                  качества волос.
+                </p>
+              </div>
+              <div class="service-price">8 500 ₽</div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="service-card reveal reveal-delay-3">
+              <div class="service-card-image">
+                <img src="./img/service3.jpg" alt="Тонирование & Уход" />
+              </div>
+              <div class="service-info">
+                <h3 class="service-name">Тонирование & Уход</h3>
+                <p class="service-desc">
+                  Обновление цвета, придание блеска и глубокое насыщение волос
+                  влагой.
+                </p>
+              </div>
+              <div class="service-price">4 000 ₽</div>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="service-card reveal reveal-delay-1">
+              <div class="service-card-image">
+                <img src="./img/service4.jpg" alt="Вечерняя укладка" />
+              </div>
+              <div class="service-info">
+                <h3 class="service-name">Вечерняя укладка</h3>
+                <p class="service-desc">
+                  Создание элегантных локонов или собранной прически для вашего
+                  особого вечера.
+                </p>
+              </div>
+              <div class="service-price">3 000 ₽</div>
+            </div>
+
+            <!-- Карточка 5 -->
+            <div class="service-card reveal reveal-delay-2">
+              <div class="service-card-image">
+                <img src="./img/service5.jpg" alt="Премиальный уход Absolute" />
+              </div>
+              <div class="service-info">
+                <h3 class="service-name">Премиальный уход Absolute</h3>
+                <p class="service-desc">
+                  Интенсивное восстановление поврежденной структуры волос на
+                  молекулярном уровне.
+                </p>
+              </div>
+              <div class="service-price">3 500 ₽</div>
+            </div>
+
+            <!-- Карточка 6 -->
+            <div class="service-card reveal reveal-delay-3">
+              <div class="service-card-image">
+                <img src="./img/service6.jpg" alt="Экспресс-укладка" />
+              </div>
+              <div class="service-info">
+                <h3 class="service-name">Экспресс-укладка</h3>
+                <p class="service-desc">
+                  Быстрая и стильная сушка на брашинг для деловой встречи или
+                  свидания.
+                </p>
+              </div>
+              <div class="service-price">1 800 ₽</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <!-- Заголовок отзывов -->
+        <div class="reviews-header reveal">
+          <span class="reviews-subtitle">Отзывы клиентов</span>
+          <h2 class="reviews-title">Что говорят о нас</h2>
+          <div class="reviews-decor-line"></div>
+        </div>
+
+        <!-- Контейнер слайдера -->
+        <div class="slider-wrapper reveal">
+          <!-- Переключатели слайдов (Radio) -->
+          <input type="radio" name="slider" id="slide-1" checked />
+          <input type="radio" name="slider" id="slide-2" />
+          <input type="radio" name="slider" id="slide-3" />
+
+          <!-- Окна с отзывами -->
+          <div class="slides-container">
+            <!-- Отзыв 1 -->
+            <div class="review-slide slide-content-1">
+              <div class="review-stars-box">
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+              </div>
+              <div class="review-text-anim">
+                <p class="review-text">
+                  «Самый лучший салон! Делала сложное окрашивание у мастера
+                  Анны. Результат превзошел все ожидания — цвет получился
+                  благородный, переливающийся, а волосы остались мягкими. Теперь
+                  только сюда!»
+                </p>
+              </div>
+              <span class="review-author">Мария К. (Яндекс.Карты)</span>
+            </div>
+
+            <!-- Отзыв 2 -->
+            <div class="review-slide slide-content-2">
+              <div class="review-stars-box">
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+              </div>
+              <div class="review-text-anim">
+                <p class="review-text">
+                  «Хожу на умную стрижку уже полгода. Забыла, что такое укладка
+                  по утрам! Волосы после мытья сами ложатся идеально. Атмосфера
+                  в студии невероятно уютная, всегда предложат вкусный кофе.»
+                </p>
+              </div>
+              <span class="review-author">Елена В. (Яндекс.Карты)</span>
+            </div>
+
+            <!-- Отзыв 3 -->
+            <div class="review-slide slide-content-3">
+              <div class="review-stars-box">
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+                <span class="review-star">★</span>
+              </div>
+              <div class="review-text-anim">
+                <p class="review-text">
+                  «Прекрасное место. Делала тонирование и процедуру Absolute.
+                  Волосы буквально ожили, блестят как в рекламе. Мастера очень
+                  внимательные, детально проконсультировали по домашнему уходу.»
+                </p>
+              </div>
+              <span class="review-author">Ольга Л. (Яндекс.Карты)</span>
+            </div>
+          </div>
+
+          <!-- Точки навигации (Пагинация) -->
+          <div class="slider-dots">
+            <label for="slide-1" class="dot-label"></label>
+            <label for="slide-2" class="dot-label"></label>
+            <label for="slide-3" class="dot-label"></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="contacts" id="contacts">
+      <div class="container">
+        <div class="contacts-wrapper">
+          <!-- Левая колонка: Информация -->
+          <div class="contacts-info">
+            <span class="contacts-subtitle">Ждем вас</span>
+            <h2 class="contacts-title">Контакты</h2>
+            <div class="contacts-decor-line"></div>
+
+            <div class="contacts-list">
+              <div class="contacts-item">
+                <span class="item-label">Адрес:</span>
+                <p class="item-value">
+                  г. Москва, ул. Большая Спасская, д. 12, оф. 4
+                </p>
+              </div>
+              <div class="contacts-item">
+                <span class="item-label">Режим работы:</span>
+                <p class="item-value">Ежедневно с 10:00 до 21:00</p>
+              </div>
+              <div class="contacts-item">
+                <span class="item-label">Телефон:</span>
+                <a href="tel:+79991234567" class="item-value phone-link"
+                  >+7 (999) 123-45-67</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Кнопки мессенджеров -->
+          <div class="contacts-action-card">
+            <h3 class="action-card-title">Быстрая запись</h3>
+            <p class="action-card-desc">
+              Выберите удобный мессенджер. Администратор ответит вам в течение 5
+              минут и подберет идеальное время.
+            </p>
+
+            <div class="messengers-buttons">
+              <!-- Ссылка на WhatsApp -->
+              <a
+                href="https://wa.me"
+                target="_blank"
+                class="msg-btn btn-whatsapp"
+              >
+                <svg
+                  class="msg-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.288 1.479 4.881 1.48 5.226-.001 9.479-4.259 9.482-9.489.002-2.533-.981-4.914-2.768-6.704C16.405 2.65 14.033 1.664 11.5 1.664c-5.232 0-9.486 4.256-9.489 9.485-.001 1.637.447 3.239 1.3 4.673l-.999 3.65 3.745-.982zm11.366-6.06c-.29-.145-1.716-.848-1.982-.944-.266-.096-.46-.145-.653.145-.193.291-.748.944-.919 1.138-.17.193-.341.217-.632.072-.29-.145-1.223-.45-2.33-1.439-.862-.77-1.443-1.721-1.612-2.012-.17-.29-.018-.447.127-.591.131-.13.291-.341.436-.511.145-.17.193-.291.29-.485.097-.193.049-.364-.025-.511-.072-.145-.653-1.573-.895-2.153-.235-.568-.475-.491-.653-.5h-.557c-.193 0-.507.072-.773.364-.266.291-1.014.992-1.014 2.422 0 1.43 1.039 2.81 1.184 3.004.145.193 2.043 3.12 4.949 4.378.691.299 1.231.478 1.651.612.695.221 1.328.19 1.83.115.56-.083 1.716-.702 1.958-1.381.242-.679.242-1.261.17-1.381-.072-.12-.266-.194-.557-.339z"
+                  />
+                </svg>
+                Написать в WhatsApp
+              </a>
+
+              <!-- Ссылка на Telegram -->
+              <a
+                href="https://t.me"
+                target="_blank"
+                class="msg-btn btn-telegram"
+              >
+                <svg
+                  class="msg-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.97.53-1.34.52-.42-.01-1.23-.24-1.84-.44-.74-.24-1.33-.37-1.28-.79.03-.22.33-.44.91-.67 3.56-1.55 5.92-2.57 7.1-3.07 3.38-1.42 4.08-1.66 4.54-1.67.1 0 .32.02.47.14.12.1.16.24.18.33.02.11.02.24.01.37z"
+                  />
+                </svg>
+                Написать в Telegram
+              </a>
+
+              <!-- Ссылка на Instagram -->
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                class="msg-btn btn-instagram"
+              >
+                <svg
+                  class="msg-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                Наш Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Копирайт в самом низу -->
+        <div class="footer-bottom">
+          <p>&copy; 2026 Женская студия волос. Все права защищены.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="./js/main.js"></script>
+</html>
